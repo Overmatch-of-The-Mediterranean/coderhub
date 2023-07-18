@@ -1,5 +1,12 @@
 const app = require('../app/index')
-const { USERNAME_OR_PASSWORD_IS_REQUIRED, USERNAME_ALREADY_IS_EXISTS, PASSWORD_IS_UNCORRECT, USERNAME_IS_NOT_EXISTS } = require('../config/error-constants')
+const {
+    USERNAME_OR_PASSWORD_IS_REQUIRED,
+    USERNAME_ALREADY_IS_EXISTS,
+    PASSWORD_IS_UNCORRECT,
+    USERNAME_IS_NOT_EXISTS,
+    UNAUTHORIZATION,
+    PERMISSION_IS_MOT_ALLOWED
+} = require('../config/error-constants')
 
 
 app.on('error', (error, ctx) => { 
@@ -20,7 +27,15 @@ app.on('error', (error, ctx) => {
             break
         case PASSWORD_IS_UNCORRECT:
             message = '密码错误'
-            code = 1002
+            code = 1004
+            break
+        case UNAUTHORIZATION:
+            message = '没有权限'
+            code = 1005
+            break
+        case PERMISSION_IS_MOT_ALLOWED:
+            message = '你没有权限操作此资源'
+            code = 1006
             break
         default:
             break

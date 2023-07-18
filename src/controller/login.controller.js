@@ -14,6 +14,9 @@ class LoginController {
             code: 0,
             data: {id, username, token}
         }
+    }
+    test (ctx, next) { 
+        ctx.body = '用户登录测试成功'
      }
 }
  
